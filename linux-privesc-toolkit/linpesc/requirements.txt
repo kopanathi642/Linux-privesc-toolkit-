@@ -1,0 +1,5 @@
+# Linux Privilege Escalation Automation Toolkit
+#
+# Core CLI scanner uses Python standard library only (subprocess, os, stat, re, json, argparse, datetime).
+# Dashboard UI requirements:
+streamlit>=1.30.0

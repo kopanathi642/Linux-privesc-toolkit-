@@ -1,0 +1,114 @@
+{
+  "generated_at": "2026-10-23T19:09:40.667125",
+  "host_context": {
+    "user": "bhairavaswamy\\kumar",
+    "id": "",
+    "kernel": "",
+    "is_root": false
+  },
+  "summary": {
+    "CRITICAL": 0,
+    "HIGH": 0,
+    "MEDIUM": 0,
+    "LOW": 0,
+    "INFO": 12
+  },
+  "findings": [
+    {
+      "module": "sysinfo",
+      "title": "Session identity",
+      "detail": "user=bhairavaswamy\\kumar | ",
+      "severity": "INFO",
+      "exploitability": "N/A",
+      "mitigation": "N/A"
+    },
+    {
+      "module": "sysinfo",
+      "title": "Kernel / OS fingerprint",
+      "detail": "\n",
+      "severity": "INFO",
+      "exploitability": "N/A",
+      "mitigation": "N/A"
+    },
+    {
+      "module": "suid_scan",
+      "title": "SUID/SGID binaries discovered (0 total)",
+      "detail": "None found / insufficient permissions.",
+      "severity": "INFO",
+      "exploitability": "N/A",
+      "mitigation": "Review this list for anything unexpected or unauthorized."
+    },
+    {
+      "module": "permissions",
+      "title": "World-writable files (0 found)",
+      "detail": "None found.",
+      "severity": "INFO",
+      "exploitability": "Any local user can modify these files; if a privileged process later reads/executes one, this is a direct escalation path.",
+      "mitigation": "Remove world-write permission: chmod o-w <file>"
+    },
+    {
+      "module": "permissions",
+      "title": "/etc/passwd check skipped",
+      "detail": "[WinError 3] The system cannot find the path specified: '/etc/passwd'",
+      "severity": "INFO",
+      "exploitability": "Unknown",
+      "mitigation": ""
+    },
+    {
+      "module": "permissions",
+      "title": "/etc/shadow check skipped",
+      "detail": "[WinError 3] The system cannot find the path specified: '/etc/shadow'",
+      "severity": "INFO",
+      "exploitability": "Unknown",
+      "mitigation": ""
+    },
+    {
+      "module": "permissions",
+      "title": "/home directory listing",
+      "detail": "Could not read /home",
+      "severity": "INFO",
+      "exploitability": "Unknown",
+      "mitigation": ""
+    },
+    {
+      "module": "services",
+      "title": "sudo -l unavailable",
+      "detail": "error: unexpected argument '-n' found\n\n  tip: to pass '-n' as a value, use '-- -n'\n\nUsage: sudo [OPTIONS] [COMMANDLINE]... [COMMAND]\n\nFor more information, try 'help'.",
+      "severity": "INFO",
+      "exploitability": "Unknown",
+      "mitigation": ""
+    },
+    {
+      "module": "services",
+      "title": "systemd unit ExecStart targets",
+      "detail": "Checked 0 unit files; no root-run units with user-writable ExecStart targets were found (or unit directories were unreadable).",
+      "severity": "INFO",
+      "exploitability": "Unknown",
+      "mitigation": ""
+    },
+    {
+      "module": "cron_scan",
+      "title": "Current user's crontab",
+      "detail": "No crontab for current user (or inaccessible).",
+      "severity": "INFO",
+      "exploitability": "Unknown",
+      "mitigation": ""
+    },
+    {
+      "module": "cron_scan",
+      "title": "Cron script writability check",
+      "detail": "No cron-referenced files writable by the current user were found among readable cron locations.",
+      "severity": "INFO",
+      "exploitability": "Unknown",
+      "mitigation": ""
+    },
+    {
+      "module": "kernel_scan",
+      "title": "Running kernel",
+      "detail": "Unable to determine kernel version.",
+      "severity": "INFO",
+      "exploitability": "Unknown",
+      "mitigation": ""
+    }
+  ]
+}

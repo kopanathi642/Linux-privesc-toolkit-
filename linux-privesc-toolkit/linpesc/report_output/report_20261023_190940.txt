@@ -1,0 +1,70 @@
+======================================================================
+LINUX PRIVILEGE ESCALATION AUTOMATION TOOLKIT - REPORT
+Generated: 2026-10-23T19:09:40.668402
+User: bhairavaswamy\kumar  |  Root session: False
+======================================================================
+
+SUMMARY:
+  CRITICAL : 0
+  HIGH     : 0
+  MEDIUM   : 0
+  LOW      : 0
+  INFO     : 12
+
+FINDINGS (sorted by severity):
+
+----------------------------------------------------------------------
+[INFO] Session identity  (sysinfo)
+Detail: user=bhairavaswamy\kumar | 
+----------------------------------------------------------------------
+[INFO] Kernel / OS fingerprint  (sysinfo)
+Detail: 
+
+----------------------------------------------------------------------
+[INFO] SUID/SGID binaries discovered (0 total)  (suid_scan)
+Detail: None found / insufficient permissions.
+Mitigation: Review this list for anything unexpected or unauthorized.
+----------------------------------------------------------------------
+[INFO] World-writable files (0 found)  (permissions)
+Detail: None found.
+Exploitability: Any local user can modify these files; if a privileged process later reads/executes one, this is a direct escalation path.
+Mitigation: Remove world-write permission: chmod o-w <file>
+----------------------------------------------------------------------
+[INFO] /etc/passwd check skipped  (permissions)
+Detail: [WinError 3] The system cannot find the path specified: '/etc/passwd'
+Exploitability: Unknown
+----------------------------------------------------------------------
+[INFO] /etc/shadow check skipped  (permissions)
+Detail: [WinError 3] The system cannot find the path specified: '/etc/shadow'
+Exploitability: Unknown
+----------------------------------------------------------------------
+[INFO] /home directory listing  (permissions)
+Detail: Could not read /home
+Exploitability: Unknown
+----------------------------------------------------------------------
+[INFO] sudo -l unavailable  (services)
+Detail: error: unexpected argument '-n' found
+
+  tip: to pass '-n' as a value, use '-- -n'
+
+Usage: sudo [OPTIONS] [COMMANDLINE]... [COMMAND]
+
+For more information, try 'help'.
+Exploitability: Unknown
+----------------------------------------------------------------------
+[INFO] systemd unit ExecStart targets  (services)
+Detail: Checked 0 unit files; no root-run units with user-writable ExecStart targets were found (or unit directories were unreadable).
+Exploitability: Unknown
+----------------------------------------------------------------------
+[INFO] Current user's crontab  (cron_scan)
+Detail: No crontab for current user (or inaccessible).
+Exploitability: Unknown
+----------------------------------------------------------------------
+[INFO] Cron script writability check  (cron_scan)
+Detail: No cron-referenced files writable by the current user were found among readable cron locations.
+Exploitability: Unknown
+----------------------------------------------------------------------
+[INFO] Running kernel  (kernel_scan)
+Detail: Unable to determine kernel version.
+Exploitability: Unknown
+----------------------------------------------------------------------

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linux Privilege Escalation Audit Report</title>
+<style>
+  :root {
+    --bg: #0f1216; --panel: #171b21; --text: #e6e8eb; --muted: #9aa4af;
+    --border: #262c34;
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #f5f6f8; --panel: #ffffff; --text: #1b1f24; --muted: #5b6672;
+      --border: #e1e4e8;
+    }
+  }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, Segoe UI, Roboto, sans-serif;
+          margin: 0; padding: 32px 16px; }
+  .wrap { max-width: 980px; margin: 0 auto; }
+  h1 { font-size: 1.4rem; margin-bottom: 4px; }
+  .meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 24px; }
+  .summary { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
+  .stat { background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+           padding: 12px 18px; min-width: 90px; text-align: center; }
+  .stat .num { font-size: 1.4rem; font-weight: 700; }
+  .stat .lbl { color: var(--muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: .04em; }
+  table { width: 100%; border-collapse: collapse; background: var(--panel); border: 1px solid var(--border);
+           border-radius: 10px; overflow: hidden; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 0.88rem; }
+  th { color: var(--muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: .04em; }
+  .badge { color: white; padding: 2px 8px; border-radius: 6px; font-size: 0.72rem; font-weight: 700; white-space: nowrap; }
+  .detail { color: var(--muted); white-space: pre-wrap; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.78rem; }
+  .tablewrap { overflow-x: auto; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Linux Privilege Escalation Audit Report</h1>
+  <div class="meta">
+    Generated 2026-10-23T19:11:31.874969 &middot;
+    User: bhairavaswamy\kumar &middot;
+    Root session: False
+  </div>
+  <div class="summary">
+    <div class="stat"><div class="num" style="color:#7a0b0b">0</div><div class="lbl">CRITICAL</div></div><div class="stat"><div class="num" style="color:#c0392b">0</div><div class="lbl">HIGH</div></div><div class="stat"><div class="num" style="color:#d68910">0</div><div class="lbl">MEDIUM</div></div><div class="stat"><div class="num" style="color:#2874a6">0</div><div class="lbl">LOW</div></div><div class="stat"><div class="num" style="color:#566573">12</div><div class="lbl">INFO</div></div>
+  </div>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>Severity</th><th>Module</th><th>Finding</th></tr></thead>
+    <tbody>
+      
+        <tr>
+          <td><span class="badge" style="background:#566573">INFO</span></td>
+          <td>sysinfo</td>
+          <td><strong>Session identity</strong><br>
+              <span class="detail">user=bhairavaswamy\kumar | </span>
+              
+              
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge" style="background:#566573">INFO</span></td>
+          <td>sysinfo</td>
+          <td><strong>Kernel / OS fingerprint</strong><br>
+              <span class="detail">
+</span>
+              
+              
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge" style="background:#566573">INFO</span></td>
+          <td>suid_scan</td>
+          <td><strong>SUID/SGID binaries discovered (0 total)</strong><br>
+              <span class="detail">None found / insufficient permissions.</span>
+              
+              <br><strong>Mitigation:</strong> Review this list for anything unexpected or unauthorized.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge" style="background:#566573">INFO</span></td>
+          <td>permissions</td>
+          <td><strong>World-writable files (0 found)</strong><br>
+              <span class="detail">None found.</span>
+              <br><em>Exploitability: Any local user can modify these files; if a privileged process later reads/executes one, this is a direct escalation path.</em>
+              <br><strong>Mitigation:</strong> Remove world-write permission: chmod o-w &lt;file&gt;
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge" style="background:#566573">INFO</span></td>
+          <td>permissions</td>
+          <td><strong>/etc/passwd check skipped</strong><br>
+              <span class="detail">[WinError 3] The system cannot find the path specified: '/etc/passwd'</span>
+              <br><em>Exploitability: Unknown</em>
+              
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge" style="background:#566573">INFO</span></td>
+          <td>permissions</td>
+          <td><strong>/etc/shadow check skipped</strong><br>
+              <span class="detail">[WinError 3] The system cannot find the path specified: '/etc/shadow'</span>
+              <br><em>Exploitability: Unknown</em>
+              
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge" style="background:#566573">INFO</span></td>
+          <td>permissions</td>
+          <td><strong>/home directory listing</strong><br>
+              <span class="detail">Could not read /home</span>
+              <br><em>Exploitability: Unknown</em>
+              
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge" style="background:#566573">INFO</span></td>
+          <td>services</td>
+          <td><strong>sudo -l unavailable</strong><br>
+              <span class="detail">error: unexpected argument '-n' found
+
+  tip: to pass '-n' as a value, use '-- -n'
+
+Usage: sudo [OPTIONS] [COMMANDLINE]... [COMMAND]
+
+For more information, try 'help'.</span>
+              <br><em>Exploitability: Unknown</em>
+              
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge" style="background:#566573">INFO</span></td>
+          <td>services</td>
+          <td><strong>systemd unit ExecStart targets</strong><br>
+              <span class="detail">Checked 0 unit files; no root-run units with user-writable ExecStart targets were found (or unit directories were unreadable).</span>
+              <br><em>Exploitability: Unknown</em>
+              
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge" style="background:#566573">INFO</span></td>
+          <td>cron_scan</td>
+          <td><strong>Current user's crontab</strong><br>
+              <span class="detail">No crontab for current user (or inaccessible).</span>
+              <br><em>Exploitability: Unknown</em>
+              
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge" style="background:#566573">INFO</span></td>
+          <td>cron_scan</td>
+          <td><strong>Cron script writability check</strong><br>
+              <span class="detail">No cron-referenced files writable by the current user were found among readable cron locations.</span>
+              <br><em>Exploitability: Unknown</em>
+              
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge" style="background:#566573">INFO</span></td>
+          <td>kernel_scan</td>
+          <td><strong>Running kernel</strong><br>
+              <span class="detail">Unable to determine kernel version.</span>
+              <br><em>Exploitability: Unknown</em>
+              
+          </td>
+        </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+</body>
+</html>

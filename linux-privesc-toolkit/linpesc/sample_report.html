@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linux Privilege Escalation Audit Report</title>
+<style>
+  :root {
+    --bg: #0f1216; --panel: #171b21; --text: #e6e8eb; --muted: #9aa4af;
+    --border: #262c34;
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #f5f6f8; --panel: #ffffff; --text: #1b1f24; --muted: #5b6672;
+      --border: #e1e4e8;
+    }
+  }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, Segoe UI, Roboto, sans-serif;
+          margin: 0; padding: 32px 16px; }
+  .wrap { max-width: 980px; margin: 0 auto; }
+  h1 { font-size: 1.4rem; margin-bottom: 4px; }
+  .meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 24px; }
+  .summary { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
+  .stat { background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+           padding: 12px 18px; min-width: 90px; text-align: center; }
+  .stat .num { font-size: 1.4rem; font-weight: 700; }
+  .stat .lbl { color: var(--muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: .04em; }
+  table { width: 100%; border-collapse: collapse; background: var(--panel); border: 1px solid var(--border);
+           border-radius: 10px; overflow: hidden; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 0.88rem; }
+  th { color: var(--muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: .04em; }
+  .badge { color: white; padding: 2px 8px; border-radius: 6px; font-size: 0.72rem; font-weight: 700; white-space: nowrap; }
+  .detail { color: var(--muted); white-space: pre-wrap; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.78rem; }
+  .tablewrap { overflow-x: auto; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Linux Privilege Escalation Audit Report</h1>
+  <div class="meta">
+    Generated 2026-10-23T12:56:26.887242 &middot;
+    User: root &middot;
+    Root session: True
+  </div>
+  <div class="summary">
+    <div class="stat"><div class="num" style="color:#7a0b0b">0</div><div class="lbl">CRITICAL</div></div><div class="stat"><div class="num" style="color:#c0392b">1</div><div class="lbl">HIGH</div></div><div class="stat"><div class="num" style="color:#d68910">1</div><div class="lbl">MEDIUM</div></div><div class="stat"><div class="num" style="color:#2874a6">0</div><div class="lbl">LOW</div></div><div class="stat"><div class="num" style="color:#566573">12</div><div class="lbl">INFO</div></div>
+  </div>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>Severity</th><th>Module</th><th>Finding</th></tr></thead>
+    <tbody>
+      
+        <tr>
+          <td><span class="badge" style="background:#c0392b">HIGH</span></td>
+          <td>kernel_scan</td>
+          <td><strong>Possible match: CVE-2021-4034 (PwnKit (pkexec))</strong><br>
+              <span class="detail">Running kernel 6.18.44-fc-v153 falls within the affected range for CVE-2021-4034. polkit's pkexec local privilege escalation; check pkexec/policykit version, not just kernel.</span>
+              <br><em>Exploitability: Publicly documented, see NVD entry for CVE-2021-4034. This toolkit does not execute the exploit.</em>
+              <br><strong>Mitigation:</strong> Apply vendor kernel/package updates and reboot; confirm patched status against your distro's security tracker.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge" style="background:#d68910">MEDIUM</span></td>
+          <td>permissions</td>
+          <td><strong>World-writable files (9 found)</strong><br>
+              <span class="detail">/usr/etc/npmrc
+/tmp/uv-setuptools-485db6d65da711db.lock
+/tmp/uv-setuptools-25a17d8eca85a703.lock
+/tmp/uv-setuptools-f4b63408ed8c7c10.lock
+/tmp/uv-ce9cd633bb00c47d.lock
+/home/claude/.cache/uv/sdists-v9/index/a9e76d7595fd976e/odfpy/1.4.1/.lock
+/home/claude/.cache/uv/sdists-v9/index/a9e76d7595fd976e/pyoo/1.4/.lock
+/home/claude/.cache/uv/sdists-v9/index/a9e76d7595fd976e/path-and-address/2.0.1/.lock
+/home/claude/.cache/uv/.lock</span>
+              <br><em>Exploitability: Any local user can modify these files; if a privileged process later reads/executes one, this is a direct escalation path.</em>
+              <br><strong>Mitigation:</strong> Remove world-write permission: chmod o-w &lt;file&gt;
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge" style="background:#566573">INFO</span></td>
+          <td>sysinfo</td>
+          <td><strong>Session identity</strong><br>
+              <span class="detail">user=root | uid=0(root) gid=0(root) groups=0(root)</span>
+              
+              
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge" style="background:#566573">INFO</span></td>
+          <td>sysinfo</td>
+          <td><strong>Kernel / OS fingerprint</strong><br>
+              <span class="detail">Linux vm 6.18.44-fc-v153 #1 SMP PREEMPT_DYNAMIC @0 x86_64 x86_64 x86_64 GNU/Linux
+PRETTY_NAME=&quot;Ubuntu 24.04.4 LTS&quot;
+NAME=&quot;Ubuntu&quot;
+VERSION_ID=&quot;24.04&quot;
+VERSION=&quot;24.04.4 LTS (Noble Numbat)&quot;
+VERSION_CODENAME=noble
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL=&quot;https://www.ubuntu.com/&quot;
+SUPPORT_URL=&quot;https://help.ubuntu.com/&quot;
+BUG_REPORT_URL=&quot;https://bugs.launchpad.net/ubuntu/&quot;
+PRIVACY_POLICY_URL=&quot;https://www.ubuntu.com/legal/terms-and-policies/privacy-policy&quot;
+UBUNTU_CODENAME=noble
+LOGO=ubuntu-logo</span>
+              
+              
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge" style="background:#566573">INFO</span></td>
+          <td>sysinfo</td>
+          <td><strong>Already running as root</strong><br>
+              <span class="detail">The toolkit was invoked with root privileges. Scan results reflect what root can see on this host, not what an unprivileged attacker could reach.</span>
+              
+              <br><strong>Mitigation:</strong> Re-run as a low-privilege user for a realistic attacker-eye-view audit.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge" style="background:#566573">INFO</span></td>
+          <td>suid_scan</td>
+          <td><strong>SUID/SGID binaries discovered (19 total)</strong><br>
+              <span class="detail">/usr/sbin/pam_extrausers_chkpwd
+/usr/sbin/unix_chkpwd
+/usr/lib/polkit-1/polkit-agent-helper-1
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/local/share/fonts
+/usr/bin/fusermount3
+/usr/bin/chage
+/usr/bin/chfn
+/usr/bin/chsh
+/usr/bin/expiry
+/usr/bin/gpasswd
+/usr/bin/mount
+/usr/bin/newgrp
+/usr/bin/passwd
+/usr/bin/su
+/usr/bin/umount
+/var/log/journal
+/var/mail
+/var/local</span>
+              
+              <br><strong>Mitigation:</strong> Review this list for anything unexpected or unauthorized.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge" style="background:#566573">INFO</span></td>
+          <td>permissions</td>
+          <td><strong>/etc/passwd permissions</strong><br>
+              <span class="detail">mode=0o644 (expected &lt;= 0o644)</span>
+              
+              
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge" style="background:#566573">INFO</span></td>
+          <td>permissions</td>
+          <td><strong>/etc/shadow permissions</strong><br>
+              <span class="detail">mode=0o640 (expected &lt;= 0o640)</span>
+              
+              
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge" style="background:#566573">INFO</span></td>
+          <td>permissions</td>
+          <td><strong>/home directory listing</strong><br>
+              <span class="detail">drwxr-xr-x 4 root root 4096 Apr 18  2026 /home</span>
+              <br><em>Exploitability: Unknown</em>
+              
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge" style="background:#566573">INFO</span></td>
+          <td>services</td>
+          <td><strong>sudo -l unavailable</strong><br>
+              <span class="detail">command not found: sudo -n -l</span>
+              <br><em>Exploitability: Unknown</em>
+              
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge" style="background:#566573">INFO</span></td>
+          <td>services</td>
+          <td><strong>systemd ExecStart writability check skipped</strong><br>
+              <span class="detail">Toolkit is running as root, so a 'writable by current user' check is meaningless here. Re-run as a low-privilege user for a realistic attacker-eye-view result.</span>
+              <br><em>Exploitability: Unknown</em>
+              
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge" style="background:#566573">INFO</span></td>
+          <td>cron_scan</td>
+          <td><strong>Current user's crontab</strong><br>
+              <span class="detail">No crontab for current user (or inaccessible).</span>
+              <br><em>Exploitability: Unknown</em>
+              
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge" style="background:#566573">INFO</span></td>
+          <td>cron_scan</td>
+          <td><strong>Cron writability check limited</strong><br>
+              <span class="detail">Toolkit is running as root, so a 'writable by current user' check is meaningless (root can write everything). Entries below are listed for review only; re-run as a low-privilege user for a real writability signal.</span>
+              <br><em>Exploitability: Unknown</em>
+              
+          </td>
+        </tr>
+        <tr>
+          <td><span class="badge" style="background:#566573">INFO</span></td>
+          <td>kernel_scan</td>
+          <td><strong>Running kernel</strong><br>
+              <span class="detail">6.18.44-fc-v153</span>
+              <br><em>Exploitability: Unknown</em>
+              
+          </td>
+        </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+</body>
+</html>

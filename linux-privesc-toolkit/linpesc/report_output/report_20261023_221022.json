@@ -1,0 +1,154 @@
+{
+  "generated_at": "2026-10-23T22:10:22.973763",
+  "host_context": {
+    "user": "bhairavaswamy\\kumar",
+    "id": "",
+    "kernel": "",
+    "is_root": false,
+    "os_release": ""
+  },
+  "summary": {
+    "CRITICAL": 0,
+    "HIGH": 0,
+    "MEDIUM": 0,
+    "LOW": 0,
+    "INFO": 15
+  },
+  "findings": [
+    {
+      "module": "sysinfo",
+      "title": "Session identity",
+      "detail": "user=bhairavaswamy\\kumar | ",
+      "severity": "INFO",
+      "exploitability": "N/A",
+      "mitigation": "N/A",
+      "confidence": "Confirmed"
+    },
+    {
+      "module": "sysinfo",
+      "title": "Kernel / OS fingerprint",
+      "detail": "\n",
+      "severity": "INFO",
+      "exploitability": "N/A",
+      "mitigation": "N/A",
+      "confidence": "Confirmed"
+    },
+    {
+      "module": "suid_scan",
+      "title": "SUID/SGID binaries discovered (0 total)",
+      "detail": "None found or unreadable on this host.",
+      "severity": "INFO",
+      "exploitability": "N/A",
+      "mitigation": "Periodically audit SUID/SGID inventory against baseline.",
+      "confidence": "Confirmed"
+    },
+    {
+      "module": "suid_scan",
+      "title": "Linux file capabilities check",
+      "detail": "The 'getcap' utility is not available on this system (libcap2-bin not installed).",
+      "severity": "INFO",
+      "exploitability": "N/A",
+      "mitigation": "Install libcap2-bin if capability auditing is desired.",
+      "confidence": "N/A"
+    },
+    {
+      "module": "permissions",
+      "title": "World-writable files (0 found)",
+      "detail": "No world-writable files discovered.",
+      "severity": "INFO",
+      "exploitability": "Any local unprivileged user can modify world-writable files. If a privileged script or cron job reads or executes them, privilege escalation is possible.",
+      "mitigation": "Remove world write permissions using: chmod o-w <file>",
+      "confidence": "Confirmed"
+    },
+    {
+      "module": "permissions",
+      "title": "World-writable directory sticky bit audit",
+      "detail": "No world-writable directories lacking the sticky bit were found.",
+      "severity": "INFO",
+      "exploitability": "N/A",
+      "mitigation": "N/A",
+      "confidence": "Confirmed"
+    },
+    {
+      "module": "permissions",
+      "title": "/etc/passwd inspection status",
+      "detail": "[WinError 3] The system cannot find the path specified: '/etc/passwd'",
+      "severity": "INFO",
+      "exploitability": "Unknown",
+      "mitigation": "",
+      "confidence": "Confirmed"
+    },
+    {
+      "module": "permissions",
+      "title": "/etc/shadow inspection status",
+      "detail": "[WinError 3] The system cannot find the path specified: '/etc/shadow'",
+      "severity": "INFO",
+      "exploitability": "Unknown",
+      "mitigation": "",
+      "confidence": "Confirmed"
+    },
+    {
+      "module": "permissions",
+      "title": "/etc/sudoers inspection status",
+      "detail": "[WinError 3] The system cannot find the path specified: '/etc/sudoers'",
+      "severity": "INFO",
+      "exploitability": "Unknown",
+      "mitigation": "",
+      "confidence": "Confirmed"
+    },
+    {
+      "module": "permissions",
+      "title": "/home directory listing",
+      "detail": "Could not inspect /home directory.",
+      "severity": "INFO",
+      "exploitability": "Unknown",
+      "mitigation": "",
+      "confidence": "N/A"
+    },
+    {
+      "module": "services",
+      "title": "sudo -l status",
+      "detail": "error: unexpected argument '-n' found\n\n  tip: to pass '-n' as a value, use '-- -n'\n\nUsage: sudo [OPTIONS] [COMMANDLINE]... [COMMAND]\n\nFor more information, try 'help'.",
+      "severity": "INFO",
+      "exploitability": "N/A",
+      "mitigation": "N/A",
+      "confidence": "Confirmed"
+    },
+    {
+      "module": "services",
+      "title": "systemd service ExecStart targets",
+      "detail": "Audited 0 service unit files. No root services referencing user-writable executables or user-writable parent directories were found.",
+      "severity": "INFO",
+      "exploitability": "N/A",
+      "mitigation": "N/A",
+      "confidence": "Confirmed"
+    },
+    {
+      "module": "cron_scan",
+      "title": "Current user crontab",
+      "detail": "No crontab for current user (or restricted).",
+      "severity": "INFO",
+      "exploitability": "Unknown",
+      "mitigation": "",
+      "confidence": "Confirmed"
+    },
+    {
+      "module": "kernel_scan",
+      "title": "Running kernel release",
+      "detail": "Unable to determine kernel version (non-Linux or command unavailable).",
+      "severity": "INFO",
+      "exploitability": "Unknown",
+      "mitigation": "",
+      "confidence": "N/A"
+    },
+    {
+      "module": "kernel_scan",
+      "title": "Polkit pkexec check",
+      "detail": "pkexec utility was not found in PATH.",
+      "severity": "INFO",
+      "exploitability": "N/A",
+      "mitigation": "N/A",
+      "confidence": "Confirmed"
+    }
+  ]
+}

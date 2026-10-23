@@ -1,0 +1,90 @@
+======================================================================
+LINUX PRIVILEGE ESCALATION AUTOMATION TOOLKIT - REPORT
+Generated: 2026-10-23T22:10:22.973763
+User: bhairavaswamy\kumar  |  Root session: False
+======================================================================
+
+SUMMARY:
+  CRITICAL : 0
+  HIGH     : 0
+  MEDIUM   : 0
+  LOW      : 0
+  INFO     : 15
+
+FINDINGS (sorted by severity):
+
+----------------------------------------------------------------------
+[INFO] Session identity  (sysinfo)
+Detail: user=bhairavaswamy\kumar | 
+Confidence: Confirmed
+----------------------------------------------------------------------
+[INFO] Kernel / OS fingerprint  (sysinfo)
+Detail: 
+
+Confidence: Confirmed
+----------------------------------------------------------------------
+[INFO] SUID/SGID binaries discovered (0 total)  (suid_scan)
+Detail: None found or unreadable on this host.
+Confidence: Confirmed
+Mitigation: Periodically audit SUID/SGID inventory against baseline.
+----------------------------------------------------------------------
+[INFO] Linux file capabilities check  (suid_scan)
+Detail: The 'getcap' utility is not available on this system (libcap2-bin not installed).
+Mitigation: Install libcap2-bin if capability auditing is desired.
+----------------------------------------------------------------------
+[INFO] World-writable files (0 found)  (permissions)
+Detail: No world-writable files discovered.
+Confidence: Confirmed
+Exploitability: Any local unprivileged user can modify world-writable files. If a privileged script or cron job reads or executes them, privilege escalation is possible.
+Mitigation: Remove world write permissions using: chmod o-w <file>
+----------------------------------------------------------------------
+[INFO] World-writable directory sticky bit audit  (permissions)
+Detail: No world-writable directories lacking the sticky bit were found.
+Confidence: Confirmed
+----------------------------------------------------------------------
+[INFO] /etc/passwd inspection status  (permissions)
+Detail: [WinError 3] The system cannot find the path specified: '/etc/passwd'
+Confidence: Confirmed
+Exploitability: Unknown
+----------------------------------------------------------------------
+[INFO] /etc/shadow inspection status  (permissions)
+Detail: [WinError 3] The system cannot find the path specified: '/etc/shadow'
+Confidence: Confirmed
+Exploitability: Unknown
+----------------------------------------------------------------------
+[INFO] /etc/sudoers inspection status  (permissions)
+Detail: [WinError 3] The system cannot find the path specified: '/etc/sudoers'
+Confidence: Confirmed
+Exploitability: Unknown
+----------------------------------------------------------------------
+[INFO] /home directory listing  (permissions)
+Detail: Could not inspect /home directory.
+Exploitability: Unknown
+----------------------------------------------------------------------
+[INFO] sudo -l status  (services)
+Detail: error: unexpected argument '-n' found
+
+  tip: to pass '-n' as a value, use '-- -n'
+
+Usage: sudo [OPTIONS] [COMMANDLINE]... [COMMAND]
+
+For more information, try 'help'.
+Confidence: Confirmed
+----------------------------------------------------------------------
+[INFO] systemd service ExecStart targets  (services)
+Detail: Audited 0 service unit files. No root services referencing user-writable executables or user-writable parent directories were found.
+Confidence: Confirmed
+----------------------------------------------------------------------
+[INFO] Current user crontab  (cron_scan)
+Detail: No crontab for current user (or restricted).
+Confidence: Confirmed
+Exploitability: Unknown
+----------------------------------------------------------------------
+[INFO] Running kernel release  (kernel_scan)
+Detail: Unable to determine kernel version (non-Linux or command unavailable).
+Exploitability: Unknown
+----------------------------------------------------------------------
+[INFO] Polkit pkexec check  (kernel_scan)
+Detail: pkexec utility was not found in PATH.
+Confidence: Confirmed
+----------------------------------------------------------------------
